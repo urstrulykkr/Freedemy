@@ -117,15 +117,15 @@
             </div>
             <div class='mob-menu-signup'>
                 {% if user.is_authenticated %}
-                <a href='/accounts/signup/'><li style='display: none; text-align: center; margin: .4rem .5rem; padding: .2rem 0; background-color: #8710d8; color: #fff; border-radius: 4px; border-bottom: 2px solid #f8f8ff;'>Signup</li></a>
+                <a href='/accounts/signup/'><li style='display: none; text-align: center; margin: .4rem .5rem; padding: .2rem 0; background-color: #FFAC1C; color: #fff; border-radius: 4px; border-bottom: 2px solid #f8f8ff;'>Signup</li></a>
                 {% else %}
-                <a href='/accounts/signup'><li style='text-align: center; margin: .4rem .5rem; padding: .2rem 0; background-color: #8710d8; color: #fff; border-radius: 4px; border-bottom: 2px solid #f8f8ff;'>Signup</li></a>
+                <a href='/accounts/signup'><li style='text-align: center; margin: .4rem .5rem; padding: .2rem 0; background-color: #FFAC1C; color: #fff; border-radius: 4px; border-bottom: 2px solid #f8f8ff;'>Signup</li></a>
                 {% endif %}
                 
                 {% if user.is_authenticated %}
-                <a href='/accounts/logout'><li style='text-align: center; margin: .4rem .5rem; padding: .2rem 0; background-color: #8710d8; color: #fff; border-radius: 4px; border-bottom: 2px solid #f8f8ff;'>Logout</li></a>
+                <a href='/accounts/logout'><li style='text-align: center; margin: .4rem .5rem; padding: .2rem 0; background-color: #FFAC1C; color: #fff; border-radius: 4px; border-bottom: 2px solid #f8f8ff;'>Logout</li></a>
                 {% else %}
-                <a href='/accounts/login'><li style='text-align: center; margin: .4rem .5rem; padding: .2rem 0; background-color: #8710d8; color: #fff; border-radius: 4px; border-bottom: 2px solid #f8f8ff;'>Login</li></a>
+                <a href='/accounts/login'><li style='text-align: center; margin: .4rem .5rem; padding: .2rem 0; background-color: #FFAC1C; color: #fff; border-radius: 4px; border-bottom: 2px solid #f8f8ff;'>Login</li></a>
                 {% endif %}
             </div>
         </ul>
@@ -197,9 +197,9 @@
       </main>
       
 
-    <a href='https://github.com/ashish-makes' target='_blank'><div class='ashish-credits'>
+    <a target='_blank'><div class='ashish-credits'>
         <img class="icons" style='height: 1.5rem; width: 1.5rem; cursor: pointer;' src='{% static 'img/heart.svg' %}'>
-        <span style="margin-top: .1rem;" class='text'>A project by <span class='name' style='font-weight: 500;'>ashish<span></span>
+        <span style="margin-top: .1rem;" class='text'>A project by <span class='name' style='font-weight: 500;'>Group 5<span></span>
     </div></a>
 
 <script src="{% static 'js/script.js' %}"></script>

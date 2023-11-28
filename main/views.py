@@ -17,6 +17,10 @@ from .forms import CourseEditForm
 from django.contrib import messages
 
 import pytz
+from django.shortcuts import render
+from django.db.models import Q
+from .models import Course
+
 
 # Create your views here.
 
@@ -232,3 +236,11 @@ def category(request, category):
         'courses': courses
     }
     return render(request, 'category.html', context)
+
+def search_courses(request):
+    query = request.GET.get('query', '')
+    courses = Course.objects.filter(
+        Q(title__icontains=query) |  # Adjust the fields you want to search
+        Q(description__icontains=query)
+    )
+    return render(request, 'your_template.html', {'courses': courses})
