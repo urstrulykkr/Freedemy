@@ -1,0 +1,19 @@
+{% extends 'dashboard-base.html' %}
+
+{% block content %}
+  <h2>Course Search</h2>
+  <form method="post" action="{% url 'course_search' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+
+  {% if courses %}
+    <h3>Search Results:</h3>
+    <ul>
+      {% for course in courses %}
+        <li>{{ course.title }} - {{ course.description }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
