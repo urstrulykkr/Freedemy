@@ -84,7 +84,7 @@ def dashboard_home(request):
             enrollment_date_ist = enrollment.enrolled_at.astimezone(ist_tz)
             enrollment_date = enrollment_date_ist.strftime('%d %B %Y %H:%M:%S')
             enrollments.append({'course_title': course.title, 'student_name': student.username, 'enrollment_date': enrollment_date})
-
+    
     context = {
         'courses_uploaded': courses_uploaded,
         'num_courses_uploaded': num_courses_uploaded,
@@ -244,3 +244,6 @@ def search_courses(request):
         Q(description__icontains=query)
     )
     return render(request, 'your_template.html', {'courses': courses})
+
+def instructor(request):
+    return render(request,'instructor.html')
