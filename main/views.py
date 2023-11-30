@@ -22,6 +22,7 @@ from django.db.models import Q
 from .models import Course
 
 
+
 # Create your views here.
 
 
@@ -264,3 +265,4 @@ def search_courses(request):
 
 def instructor(request):
     return render(request,'instructor.html')
+
