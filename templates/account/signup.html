@@ -24,7 +24,7 @@
             {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
-            <button style='width: 100%' type="submit">Sign Up</button>
+            <button style='width: 100%' type="submit" onclick="window.location.href=templates/account/password_reset_done.html">Sign Up</button>
           </form>
           <a style='margin-top: 1rem;' class="login-via-btn" href="{% provider_login_url 'google' %}">Login via Google</a>
         </div>

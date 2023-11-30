@@ -30,6 +30,10 @@ SECRET_KEY = 'django-insecure-&dgr^x)^#^jnys&p9g7djz&vd$1##vz3(c@1fbb3!c6yd^#f-#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+#ALLOWED_HOSTS = ["skillmate.up.railway.app"]
+ALLOWED_HOSTS = ["*"]
+
 # ALLOWED_HOSTS = ["skillmate.up.railway.app"]
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://skillmate.up.railway.app']
@@ -59,19 +63,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    
     'django.contrib.sites',
-
     'allauth',
-
+    
     'allauth.account',
     'allauth.socialaccount',
 
     'allauth.socialaccount.providers.google',
 
     'cloudinary',
-
     'main',
+    'main.tests',
 ]
 
 MIDDLEWARE = [
@@ -107,9 +110,10 @@ TEMPLATES = [
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': '477770344081-i7ohji3vs341dbf06vo74eftglnbfes4.apps.googleusercontent.com',
-            'secret': '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',
-            'key': ''
+            'client_id': '441435277417-hc2ptbd844escgvcvgdd4ttkj3u0asln.apps.googleusercontent.com',
+            'secret': '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',
+            'key': '',
+            'redirect_uris': ['http://localhost:8000/accounts/google/login/callback/'],
         }
     }
 }

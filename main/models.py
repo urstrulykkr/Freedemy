@@ -14,6 +14,9 @@ class library(models.Model):
     image = CloudinaryField('image')
 
 class Course(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    
     LEVEL_CHOICES = [
         ('Beginner', 'Beginner'),
         ('Intermediate', 'Intermediate'),

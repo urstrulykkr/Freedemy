@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 
 from django.contrib.auth.decorators import login_required
 
-from .forms import CourseEditForm
+from .forms import CourseEditForm, CourseSearchForm
 
 from django.contrib import messages
 
@@ -181,6 +181,23 @@ def upload(request):
 #         'course': course
 #     }
 #     return render(request, 'course.html', context)
+
+def course_search(request):
+    courses = Course.objects.all()
+    
+
+    if request.method == "POST":
+        form = CourseSearchForm(request.POST)
+        if form.is_valid():
+            search_query = form.cleaned_data['search_query']
+            if search_query:
+                courses = courses.filter(title__icontains=search_query)
+    else:
+        form = CourseSearchForm()
+                
+    context = {'courses': courses, 'form': form}
+    
+    return render(request, 'dashboard/course-search.html', context)
 
 def course_details(request, instructor, slug):
     instructor_obj = get_object_or_404(User, username=instructor)
