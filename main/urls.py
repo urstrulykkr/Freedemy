@@ -17,4 +17,6 @@ urlpatterns = [
     path('courses/<str:category>/', views.category, name='category'),
     path('search/', views.search_courses, name='search_courses'),
     path('dashboard/course-search/', views.course_search, name='course_search'),
+    path('instructor/',views.instructor,name='instructor')
+
 ]

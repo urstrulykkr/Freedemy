@@ -15,12 +15,13 @@
           <img style = "object-fit: cover; border-radius: 4px;" src='{% static 'img/login-img.webp' %}' width="100%" height="100%">
         </div>
         <div>
-      <h1>Sign in to continue</h1>
+      <h1 style="line-height: 3rem;">Sign in to continue as Student</h1>
+      <p style="margin-top: .5rem;">Instructor? <a href="{% url 'instructor' %}" style="color: orange;">Click Here</a></p>
       {% get_providers as socialaccount_providers %}
       {% if socialaccount_providers %}
         {% comment %} <p>{% blocktrans with site.name as site_name %}Please sign in with one
         of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-        for a {{ site_name }} account and sign in below:{% endblocktrans %}</p> {% endcomment %}
+        for a {{ site_name }} account and sign in below:{%s endblocktrans %}</p> {% endcomment %}
         {% include "socialaccount/snippets/login_extra.html" %}
       {% else %}
         <p>{% blocktrans %}If you have not created an account yet, then please
@@ -38,7 +39,7 @@
       {% comment %} <div class="socialaccount_ballot">
         <ul class="socialaccount_providers"> {% endcomment %}
           {% comment %} {% include "socialaccount/snippets/provider_list.html" with process="login" %} {% endcomment %}
-          <a class="login-via-btn" href="{% provider_login_url 'google' %}">Login via Google</a>
+          <!-- <a class="login-via-btn" href="{% provider_login_url 'google' %}">Login via Google</a> -->
         {% comment %} </ul> {% endcomment %}
         {% comment %} <div class="login-or">{% trans 'or' %}</div> {% endcomment %}
       {% comment %} </div> {% endcomment %}
