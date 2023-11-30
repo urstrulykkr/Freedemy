@@ -1,4 +1,4 @@
-#!/Users/jiteshmajety/Desktop/Projects/Freedemy/django-lms/venv/bin/python3
+#!/Users/umeshchandra/ENPM613/test-project/django-lms/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
