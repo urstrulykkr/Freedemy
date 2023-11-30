@@ -1,22 +1,20 @@
 from django.db import models
-
 from cloudinary.models import CloudinaryField
-
 from django.utils.text import slugify
-
 from django.contrib.auth.models import User
 
-# Create your models here.
-
-class library(models.Model):
+# Define a model for the library
+class Library(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=255)
     image = CloudinaryField('image')
 
+# Define a model for courses
 class Course(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    
+
+    # Choices for the difficulty level of the course
     LEVEL_CHOICES = [
         ('Beginner', 'Beginner'),
         ('Intermediate', 'Intermediate'),
@@ -37,19 +35,17 @@ class Course(models.Model):
     category = models.CharField(max_length=255, default="uncategorized")
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.00)
     discount = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
-
     requirements = models.TextField(help_text='Enter the requirements for the course, separated by a comma.', default='')
     content = models.TextField(help_text='Enter the course content, separated by a comma.', default='')
-
     lesson_title = models.CharField(max_length=255, default='Lesson')
     lesson_video = CloudinaryField('lesson_video', null=True)
-
     students = models.ManyToManyField(User, related_name='enrolled_courses', blank=True)
 
     def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
+        # Automatically generate a unique slug for each course based on its title
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
@@ -61,7 +57,8 @@ class Course(models.Model):
 
     def get_content_list(self):
         return self.content.split(',')
-    
+
+# Define a model for course enrollments
 class Enrollment(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     student = models.ForeignKey(User, on_delete=models.CASCADE, related_name='enrollments')

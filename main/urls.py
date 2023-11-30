@@ -1,6 +1,8 @@
 from django.urls import path
 from main import views
 
+# Define URL patterns for the main application views
+
 urlpatterns = [
     path('', views.index, name='home'),
     path('about/', views.about, name='about'),
