@@ -16,9 +16,11 @@ pip3 install -r requirements.txt
 
 Database Setup
 Create a new database and user in your preferred database system.
+
 Run database migrations:
 python3 manage.py makemigrations
 python3 manage.py migrate
+
 Update the database configuration in settings.py with your database details.
 
 Run the Development Server
