@@ -25,45 +25,25 @@ from .models import Course
 
 # Create your views here.
 
-
+# Index route logic
 def index(request):
     courses = Course.objects.all()[:6]
     return render(request, 'index.html', {'courses': courses})
 
-
+# About route logic
 def about(request):
     return render(request, 'about.html')
 
-
+# Contact route logic
 def contact(request):
     return render(request, 'contact.html')
 
-
+# Courses route logic
 def courses(request):
     courses = Course.objects.all()
     return render(request, 'courses.html', {'courses': courses})
 
-# def profile(request):
-#     user = request.user
-#     if user.is_authenticated:
-#         # get first and last name
-#         first_name = user.first_name
-#         last_name = user.last_name
-
-#         # get username and email
-#         username = user.username
-#         email = user.email
-
-#         # get profile picture
-#         profile_picture = None
-#         if hasattr(user, 'profile'):
-#             profile_picture = user.profile.picture
-
-#         return render(request, 'account/dashboard/profile.html', {'first_name': first_name, 'last_name': last_name, 'username': username, 'email': email, 'profile_picture': profile_picture})
-#     else:
-#         return redirect('account_login')
-
-
+# Dashboard route logic
 def dashboard_home(request):
     user = request.user
     courses_uploaded = Course.objects.filter(instructor=user)
@@ -95,7 +75,7 @@ def dashboard_home(request):
     }
     return render(request, 'dashboard/home.html', context)
 
-
+# profile logic
 def profile(request):
     user = request.user
     email = user.email
@@ -103,7 +83,7 @@ def profile(request):
     username = user.username
     return render(request, 'dashboard/profile.html', {'email': email, 'full_name': full_name, 'username': username})
 
-
+# courses enrolled
 def courses_enrolled(request):
     user = request.user
     courses = Course.objects.filter(students=user)
@@ -112,11 +92,12 @@ def courses_enrolled(request):
     }
     return render(request, 'dashboard/courses-enrolled.html', context)
 
-
+# courses uploading logic
 def courses_uploaded(request):
     courses = Course.objects.filter(instructor=request.user)
     return render(request, 'dashboard/courses-uploaded.html', {'courses': courses})
 
+#LOGIN: To upload
 @login_required
 def upload(request):
     if request.method == 'POST':
@@ -173,15 +154,6 @@ def upload(request):
         course.save()
 
     return render(request, 'dashboard/upload.html')
-
-
-# def course_details(request, instructor, slug):
-#     instructor_obj = get_object_or_404(User, username=instructor)
-#     course = get_object_or_404(Course, slug=slug, instructor=instructor_obj)
-#     context = {
-#         'course': course
-#     }
-#     return render(request, 'course.html', context)
 
 def course_search(request):
     courses = Course.objects.all()
